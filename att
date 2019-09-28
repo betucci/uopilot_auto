@@ -1,0 +1,30 @@
+ Repeat 10                     //repete 10 vezes Mas ele funciona pra sempre.
+   :main                     //main script part
+       send tab                //proximo target
+        if 702, 47 1051804      //verifica se o mob tem hp
+           goto atak         //proximo comando
+	:atak                     //comandos para atacar o mob
+           Repeat 5
+              send 1           //hit normal no mob pode colocar sua macro
+         End_Repeat
+              while 714, 47 1051804    //verifica se o mob tem hp e repete o comando
+                  goto atak
+              end_while
+         end_if
+            send 7            //abre as moedas do evento
+               send tab     // aqui ele verifica sem tem mais mob no range
+            while 714, 47 1051804
+                goto atak               // se tiver ele ataca, se nao ele gira a camera
+            end_while
+           send esc           //Para o caso do cte chamar
+              if 783, 185 12507614   // verifica se a janela de sistema ta aberta
+                    send esc
+               end_if
+             while 1575, 222 6791100    //verifica o buff do att(precisão)
+                goto giro
+             end_while
+          send 8       // buff
+      :giro
+          showwindow        // puxa a janela do jogo para o girar a camera funcionar
+          send dddddddddddddddddddddddddddddddddddd  //gira a camera
+End_Repeat
